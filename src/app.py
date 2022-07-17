@@ -31,7 +31,7 @@ def make_before_after(before, after):
     )
 
 
-descr = "James Webb Space Telescope First Images. Compare before and after images of Hubble vs Webb.  This app is made with Plotly Dash"
+descr = "James Webb Space Telescope First Images. Compare before and after images of Hubble vs Webb.  This Plotly Dash app is made with <100 lines of Python code"
 
 dash.register_page(
     "webb_stephans_quintet",
@@ -47,7 +47,7 @@ dash.register_page(
     "webb_deep_field",
     name="Galaxy Cluster SMACS 0723",
     description=descr,
-    image="deep_fiield_meta.gif",
+    image="deep_field_meta.gif",
     layout=make_before_after("/assets/webb_deep_field.jpg", "/assets/deep_field.jpg"),
     path="/",
 )
