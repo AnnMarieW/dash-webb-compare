@@ -47,7 +47,7 @@ dash.register_page(
     "webb_deep_field",
     name="Galaxy Cluster SMACS 0723",
     description=descr,
-    image="southern_nebula_350.jpg",
+    image="deep_fiield_meta.gif",
     layout=make_before_after("/assets/webb_deep_field.jpg", "/assets/deep_field.jpg"),
     path="/",
 )
