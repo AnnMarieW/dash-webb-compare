@@ -37,6 +37,7 @@ dash.register_page(
     "webb_stephans_quintet",
     name="Stephans Quintet",
     description=descr,
+    image="stephans_quintet_350.jpg",
     layout=make_before_after(
         "/assets/webb_stephans_quintet.jpg", "/assets/stephans_quintet.jpg"
     ),
@@ -46,6 +47,7 @@ dash.register_page(
     "webb_deep_field",
     name="Galaxy Cluster SMACS 0723",
     description=descr,
+    image="southern_nebula_350.jpg",
     layout=make_before_after("/assets/webb_deep_field.jpg", "/assets/deep_field.jpg"),
     path="/",
 )
@@ -54,12 +56,14 @@ dash.register_page(
     "webb_carina",
     name="Carina Nebula",
     description=descr,
+    image="carina_350.jpg",
     layout=make_before_after("/assets/webb_carina.jpg", "/assets/carina.png"),
 )
 dash.register_page(
     "webb_southern_ring",
     name="Southern Ring Nebula",
     description=descr,
+    image="southern_nebula_350.jpg",
     layout=make_before_after(
         "/assets/webb_southern_nebula.jpg", "/assets/southern_nebula.jpg"
     ),
