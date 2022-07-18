@@ -31,7 +31,7 @@ def make_before_after(before, after):
     )
 
 
-descr = "James Webb Space Telescope First Images. Compare before and after images of Hubble vs Webb.  This Plotly Dash app is made with <100 lines of Python code"
+descr = "James Webb Space Telescope. Compare before and after images of Hubble vs Webb.  Make an app like this with ~40 lines of Python using Plotly Dash."
 
 dash.register_page(
     "webb_stephans_quintet",
@@ -83,6 +83,7 @@ header = html.Div(
             [html.I(className="bi bi-github me-2"), "source code"],
             color="light", className="ms-2 text-white-50",
             href="https://github.com/AnnMarieW/webb-compare",
+            title="Make an app like this with ~40 lines of Python using Plotly Dash"
         ),
     ],
 )
@@ -101,7 +102,6 @@ def navbar():
         pills=True,
         className="mt-5",
     )
-
 
 app.layout = dbc.Container([header, navbar(), dash.page_container])
 
