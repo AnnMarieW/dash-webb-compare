@@ -136,7 +136,7 @@ app.clientside_callback(
         }
     """,
     Output('label_div', "style"),
-    Input('url', 'href') 
+    Input('url', 'href')
 )
 
 if __name__ == "__main__":
