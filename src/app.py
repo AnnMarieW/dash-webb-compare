@@ -4,7 +4,7 @@ This is an example of a multi-page app made with `pages` that does not use the p
 """
 
 import dash
-from dash import Dash, html
+from dash import Dash, dcc, html, Output, Input
 from dash_extensions import BeforeAfter
 import dash_bootstrap_components as dbc
 
@@ -13,6 +13,7 @@ app = Dash(
     use_pages=True,
     pages_folder="",
     external_stylesheets=[dbc.themes.CYBORG, dbc.icons.BOOTSTRAP],
+    suppress_callback_exceptions=True
 )
 server = app.server
 
@@ -24,8 +25,9 @@ def make_before_after(before, after):
                 [html.Div("Hubble"), html.Div("Webb")],
                 className="d-flex justify-content-between",
                 style={"width": 1000},
+                id="label_div"
             ),
-            BeforeAfter(before=before, after=after, height=800, width=1000),
+            BeforeAfter(before=before, after=after, height=800, width=1000, id="before_after"),
         ],
         style={"marginTop": 50},
     )
@@ -103,7 +105,39 @@ def navbar():
         className="mt-5",
     )
 
-app.layout = dbc.Container([header, navbar(), dash.page_container])
+app.layout = dbc.Container([header, navbar(), dash.page_container, dcc.Location(id="url")])
+
+
+app.clientside_callback(
+    """
+        function(href) {
+            if (window.innerWidth < 750) {
+                return [500, 500]
+            }
+            return [1000, 800]
+        }
+    """,
+    Output('before_after', "width"),
+    Output('before_after', "height"),
+    Input('url', 'href')
+)
+
+
+
+
+
+app.clientside_callback(
+    """
+        function(href) {
+            if (window.innerWidth < 750) {                
+                return {"width":500}
+            }
+             return {"width":1000}
+        }
+    """,
+    Output('label_div', "style"),
+    Input('url', 'href') 
+)
 
 if __name__ == "__main__":
     app.run_server(debug=True)
