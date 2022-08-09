@@ -7,7 +7,7 @@ import dash
 from dash import Dash, dcc, html, Output, Input
 #from dash_extensions import BeforeAfter
 import dash_bootstrap_components as dbc
-from before_after import BeforeAfter
+from dash_before_after import BeforeAfter
 
 app = Dash(
     __name__,
@@ -114,7 +114,7 @@ def navbar():
         className="mt-5",
     )
 
-app.layout = dbc.Container([header, navbar(), dash.page_container, dcc.Location(id="url")])
+app.layout = dbc.Container([header, navbar(), dash.page_container, dcc.Location(id="url")], style={"max-width": 1000})
 
 if __name__ == "__main__":
     app.run_server(debug=True)
