@@ -115,38 +115,6 @@ def navbar():
     )
 
 app.layout = dbc.Container([header, navbar(), dash.page_container, dcc.Location(id="url")])
-#
-#
-# app.clientside_callback(
-#     """
-#         function(href) {
-#             if (window.innerWidth < 750) {
-#                 return [500, 500]
-#             }
-#             return [1000, 800]
-#         }
-#     """,
-#     Output('before_after', "width"),
-#     Output('before_after', "height"),
-#     Input('url', 'href')
-# )
-#
-#
-#
-#
-#
-# app.clientside_callback(
-#     """
-#         function(href) {
-#             if (window.innerWidth < 750) {
-#                 return {"width":500}
-#             }
-#              return {"width":1000}
-#         }
-#     """,
-#     Output('label_div', "style"),
-#     Input('url', 'href')
-# )
 
 if __name__ == "__main__":
     app.run_server(debug=True)
