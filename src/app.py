@@ -18,6 +18,8 @@ southern_nebula = "https://user-images.githubusercontent.com/72614349/179115666-
 webb_deep_field = "https://user-images.githubusercontent.com/72614349/179115668-2630e3e4-3a9f-4c88-9494-3412e606450a.jpg"
 webb_southern_nebula = "https://user-images.githubusercontent.com/72614349/179115670-ef5bc561-d957-4e88-82dc-53ca53541b04.jpg"
 webb_carina = "https://user-images.githubusercontent.com/72614349/179115673-15eaccb9-d17d-4667-84fb-e0a46fd444e8.jpg"
+webb_cartwheel = "https://user-images.githubusercontent.com/72614349/184414634-fbd08745-94b9-4de6-8bce-c3607d9fd8db.png"
+cartwheel = "https://user-images.githubusercontent.com/72614349/184414677-69e09ba2-9852-4dc7-9d3f-9024518dcd3c.png"
 
 
 app = Dash(
@@ -25,7 +27,7 @@ app = Dash(
     use_pages=True,
     pages_folder="",
     external_stylesheets=[dbc.themes.CYBORG, dbc.icons.BOOTSTRAP],
-    suppress_callback_exceptions=True
+    suppress_callback_exceptions=True,
 )
 server = app.server
 server.wsgi_app = WhiteNoise(server.wsgi_app, root="assets/")
@@ -38,7 +40,7 @@ def make_before_after(before, after):
                 [html.Div("Hubble"), html.Div("Webb")],
                 className="d-flex justify-content-between",
                 style={"width": "auto"},
-                id="label_div"
+                id="label_div",
             ),
             BeforeAfter(before=before, after=after, id="before_after"),
         ],
@@ -54,9 +56,9 @@ dash.register_page(
     description=descr,
     image="webb_stephans_quintet_350.jpg",
     layout=make_before_after(
-        #"/assets/stephans_quintet.jpg", "/assets/webb_stephans_quintet.jpg"
-        stephans_quintet, webb_stephans_quintet
-
+        # "/assets/stephans_quintet.jpg", "/assets/webb_stephans_quintet.jpg"
+        stephans_quintet,
+        webb_stephans_quintet,
     ),
 )
 
@@ -66,8 +68,9 @@ dash.register_page(
     description=descr,
     image="deep_field_meta.gif",
     layout=make_before_after(
-       # "/assets/deep_field.jpg", "/assets/webb_deep_field.jpg"
-        deep_field, webb_deep_field
+        # "/assets/deep_field.jpg", "/assets/webb_deep_field.jpg"
+        deep_field,
+        webb_deep_field,
     ),
     path="/",
 )
@@ -78,8 +81,8 @@ dash.register_page(
     description=descr,
     image="webb_carina_350.jpg",
     layout=make_before_after(
-      #  "/assets/carina.png", "/assets/webb_carina.jpg"
-        carina, webb_carina
+        #  "/assets/carina.png", "/assets/webb_carina.jpg"
+        carina, webb_carina,
     ),
 )
 dash.register_page(
@@ -88,8 +91,8 @@ dash.register_page(
     description=descr,
     image="webb_southern_nebula_350.jpg",
     layout=make_before_after(
-     #   "/assets/southern_nebula.jpg", "/assets/webb_southern_nebula.jpg"
-        southern_nebula, webb_southern_nebula
+        #   "/assets/southern_nebula.jpg", "/assets/webb_southern_nebula.jpg"
+        southern_nebula, webb_southern_nebula,
     ),
 )
 
@@ -98,7 +101,10 @@ dash.register_page(
     name="Cartwheel Gallery",
     description=descr,
     image="webb_cartwheel_350.jpg",
-    layout=make_before_after("/assets/cartwheel.png", "/assets/webb_cartwheel.png"),
+    layout=make_before_after(
+        #  "/assets/cartwheel.png", "/assets/webb_cartwheel.png"
+        cartwheel, webb_cartwheel,
+    ),
 )
 
 header = html.Div(
@@ -107,15 +113,16 @@ header = html.Div(
         html.Div("First Images.  Compare before and after images of Hubble vs Webb."),
         dbc.Button(
             [html.I(className="bi bi-book me-2"), "webbtelescope.org"],
-            color="light", className="text-white-50",
+            color="light",
+            className="text-white-50",
             href="https://webbtelescope.org/news/first-images/gallery",
-
         ),
         dbc.Button(
             [html.I(className="bi bi-github me-2"), "source code"],
-            color="light", className="ms-2 text-white-50",
+            color="light",
+            className="ms-2 text-white-50",
             href="https://github.com/AnnMarieW/webb-compare",
-            title="Make an app like this with ~40 lines of Python using Plotly Dash"
+            title="Make an app like this with ~40 lines of Python using Plotly Dash",
         ),
     ],
 )
@@ -135,7 +142,11 @@ def navbar():
         className="mt-5",
     )
 
-app.layout = dbc.Container([header, navbar(), dash.page_container, dcc.Location(id="url")], style={"max-width": 1000})
+
+app.layout = dbc.Container(
+    [header, navbar(), dash.page_container, dcc.Location(id="url")],
+    style={"maxWidth": 1000},
+)
 
 if __name__ == "__main__":
     app.run_server(debug=True)
