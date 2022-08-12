@@ -1,5 +1,6 @@
 """
 This is an example of a multi-page app made with `pages` that does not use the pages folder.
+Notes - the hosted images seem to load faster.  Tried whitenoise and it didn't seem to have any effect
 
 """
 
