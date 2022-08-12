@@ -5,9 +5,9 @@ This is an example of a multi-page app made with `pages` that does not use the p
 
 import dash
 from dash import Dash, dcc, html, Output, Input
-#from dash_extensions import BeforeAfter
 import dash_bootstrap_components as dbc
 from dash_before_after import BeforeAfter
+from whitenoise import WhiteNoise
 
 app = Dash(
     __name__,
@@ -17,6 +17,7 @@ app = Dash(
     suppress_callback_exceptions=True
 )
 server = app.server
+server.wsgi_app = WhiteNoise(server.wsgi_app, root="assets/")
 
 
 def make_before_after(before, after):

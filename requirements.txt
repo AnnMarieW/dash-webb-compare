@@ -1,5 +1,6 @@
 dash==2.5.1
 dash_before_after==0.0.1
 dash_bootstrap_components==1.2.0
+whitenoise==6.2.0
 gunicorn
 pandas
