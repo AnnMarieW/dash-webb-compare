@@ -99,7 +99,7 @@ dash.register_page(
 
 dash.register_page(
     "cartwheel",
-    name="Cartwheel Gallery",
+    name="Cartwheel Galaxy",
     description=descr,
     image="webb_cartwheel_350.jpg",
     layout=make_before_after(
